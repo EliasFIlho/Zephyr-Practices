@@ -1,0 +1,4 @@
+west:
+  command: /home/elias/zephyrproject/.venv/bin/west build -b stm32f030_demo -p
+  topdir: /home/elias/zephyrproject
+  version: 1.3.0

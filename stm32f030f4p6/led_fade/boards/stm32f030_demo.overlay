@@ -1,0 +1,26 @@
+/{
+    pwmleds {
+        compatible = "pwm-leds";
+        fade_led: fade_led {
+            pwms = <&pwm_tim14 1 10000 PWM_POLARITY_NORMAL>;
+        };
+    };
+
+};
+
+
+&timers14 {
+        status = "okay";
+        pwm_tim14:pwm{
+            status = "okay";
+            pinctrl-0=<&pwm_default>;
+            pinctrl-names="default";
+        };
+};
+
+
+&pinctrl {
+    pwm_default: pwm_default{
+        pinmux = <STM32_PINMUX('A',4,AF4)>;
+    };
+};
