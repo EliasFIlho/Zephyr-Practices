@@ -1,0 +1,29 @@
+/{
+    leds {
+        compatible = "gpio-leds";
+        led_0:led_0 {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+        };
+    };
+
+    zephyr,user {
+		io-channels = <&adc1 0>;
+	};
+};
+
+
+
+&adc1 {
+    status = "okay";
+    #address-cells = <1>;
+	#size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+        zephyr,oversampling = <8>;
+    };
+};
