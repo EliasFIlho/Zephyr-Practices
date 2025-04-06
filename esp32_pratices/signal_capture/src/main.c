@@ -97,8 +97,6 @@ int main(void)
 {
 
     check_pwms_devices();
-    //set_pwm_pulse_output_dft();
-
     pwm_configure_capture(cap.dev, cap.channel, (PWM_CAPTURE_TYPE_BOTH | PWM_CAPTURE_MODE_CONTINUOUS), capture_handler, NULL);
     pwm_enable_capture(cap.dev, cap.channel);
     uint8_t PULSES[21] = {1,5,10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65,70,75,80,85,90,95,100};
@@ -108,20 +106,12 @@ int main(void)
         
         for (int i = 0; i < 21  ; i++)
         {
-            //printk("\nDuty at [%d] percent\n",PULSES[i]);
             set_pwm_pulse_output_percent(PULSES[i]);
             k_msleep(500);
             set_pwm_pulse_output_percent(0);
             k_msleep(1000);
         }
 
-        // k_sleep(K_SECONDS(1));
-
-        // for (int i = 0; i < 11; i++)
-        // {
-        //     pwm_set_cycles(pwm.dev, pwm.channel, PERIODS[i], PERIODS[i]/2, PWM_POLARITY_NORMAL);
-        //     k_msleep(300);
-        // }
         k_sleep(K_SECONDS(1));
     }
     return 0;
