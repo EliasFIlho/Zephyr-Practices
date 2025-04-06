@@ -29,4 +29,4 @@ empty_file.o: /home/elias/zephyrproject/zephyr/misc/empty_file.c \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/input/esp32-touch-sensor-input.h \
  /home/elias/zephyrproject/zephyr/dts/common/espressif/partitions_0x1000_amp.dtsi \
  /home/elias/zephyrproject/zephyr/dts/common/espressif/partitions_0x1000_amp_4M.dtsi \
- /home/elias/zephyrproject/applications/led_fade/boards/esp32_devkit_wroom.overlay
+ /home/elias/zephyrproject/applications/esp32_pratices/led_fade/boards/esp32_devkit_wroom.overlay

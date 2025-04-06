@@ -1,0 +1,8 @@
+description: "7 segments display"
+
+compatible: "generic,7segments"
+
+properties:
+  pins:
+    type: array
+    required: true

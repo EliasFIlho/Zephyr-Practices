@@ -1,0 +1,7 @@
+/{
+    7segments: 7segments {
+        compatible = "generic,7segments";
+        status = "okay"
+        pins = <>;
+    };
+};

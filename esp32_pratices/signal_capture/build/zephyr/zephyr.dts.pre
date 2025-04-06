@@ -896,8 +896,8 @@
 &mcpwm0 {
     pinctrl-0 = <&mcpwm0_default>;
     pinctrl-names = "default";
-    prescale = <255>;
-    prescale-timer0 = <103>;
+    prescale = <7>;
+    prescale-timer0 = <9>;
     status = "okay";
 };
 # 0 "<command-line>" 2

@@ -1,0 +1,40 @@
+/{
+    leds {
+        compatible = "gpio-leds";
+        led_0:led_0 {
+            gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+        };
+    };
+};
+
+
+
+&spi1{
+    status = "okay";
+    pinctrl-0 = <&SPI1_DF_SCK &SPI1_DF_MISO &SPI1_DF_MOSI>;
+    pinctrl-names="default";
+    cs-gpios = <&gpioa 9 GPIO_ACTIVE_LOW>;
+    clock-frequency = <200000>;
+    
+    spi_dev:spi_dev@0{
+        //compatible = "st,stm32-spi";
+        reg = <0>;
+        spi-max-frequency = <200000>;
+        label = "spi_dev";
+    };
+
+};
+
+&pinctrl {
+    SPI1_DF_SCK: SPI1_DF_SCK {
+        pinmux = <STM32_PINMUX('A',5,AF0)>;  // PA5 SPI1_SCK
+    };
+    SPI1_DF_MISO: SPI1_DF_MISO {
+        pinmux = <STM32_PINMUX('A',6,AF0)>;  // PA6 SPI1_MISO
+    };
+    SPI1_DF_MOSI: SPI1_DF_MOSI {
+        pinmux = <STM32_PINMUX('A',7,AF0)>;  // PA7 SPI1_MOSI
+    };
+       
+        
+};

@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/elias/zephyrproject/applications/led_fade/build/zephyr/drivers/usb/common/cmake_install.cmake")
+  include("/home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/zephyr/drivers/usb/common/cmake_install.cmake")
 endif()
 

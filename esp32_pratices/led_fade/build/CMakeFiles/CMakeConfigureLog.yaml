@@ -12,7 +12,7 @@ events:
       - "CMakeLists.txt:6 (find_package)"
     message: |
       The target system is: Generic - 4.0.99 - xtensa
-      The host system is: Linux - 6.8.0-52-generic - x86_64
+      The host system is: Linux - 6.11.0-21-generic - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -62,7 +62,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
       
       The C compiler identification is GNU, found in:
-        /home/elias/zephyrproject/applications/led_fade/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.o
+        /home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.o
       
   -
     kind: "message-v1"
@@ -113,7 +113,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
       
       The CXX compiler identification is GNU, found in:
-        /home/elias/zephyrproject/applications/led_fade/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.o
+        /home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.o
       
   -
     kind: "message-v1"
@@ -132,4 +132,35 @@ events:
       This is free software; see the source for copying conditions.  There is NO
       warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
       
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/home/elias/zephyrproject/zephyr/cmake/modules/extensions.cmake:2322 (check_c_compiler_flag)"
+      - "/home/elias/zephyrproject/zephyr/cmake/modules/extensions.cmake:1176 (check_compiler_flag)"
+      - "/home/elias/zephyrproject/zephyr/cmake/modules/extensions.cmake:2361 (zephyr_check_compiler_flag)"
+      - "/home/elias/zephyrproject/zephyr/cmake/modules/extensions.cmake:2337 (target_cc_option_fallback)"
+      - "/home/elias/zephyrproject/zephyr/cmake/modules/extensions.cmake:155 (target_cc_option)"
+      - "/home/elias/zephyrproject/zephyr/CMakeLists.txt:532 (zephyr_cc_option)"
+    directories:
+      source: "/home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/CMakeScratch/TryCompile-nYDnw8"
+      binary: "/home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/CMakeScratch/TryCompile-nYDnw8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/elias/zephyrproject/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_elias_zephyrproject_applications_esp32_pratices_led_fade_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_elias_zephyr_sdk_0_17_0_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_elias_zephyr_sdk_0_17_0_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd"
+      cached: true
+      stdout: |
+        Change Dir: '/home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/CMakeScratch/TryCompile-nYDnw8'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_bd3fd
+        [1/2] /home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -Dcheck_fmacro_prefix_map__home_elias_zephyrproject_applications_esp32_pratices_led_fade_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_elias_zephyr_sdk_0_17_0_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include___isystem___home_elias_zephyr_sdk_0_17_0_xtensa_espressif_esp32_zephyr_elf_bin____lib_gcc_xtensa_espressif_esp32_zephyr_elf_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd  -nostartfiles -nostdlib -isystem "/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd   -fmacro-prefix-map=/home/elias/zephyrproject/applications/esp32_pratices/led_fade=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_bd3fd.dir/src.c.obj -c /home/elias/zephyrproject/applications/esp32_pratices/led_fade/build/CMakeFiles/CMakeScratch/TryCompile-nYDnw8/src.c
+        [2/2] : && /home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc -nostartfiles -nostdlib -isystem "/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include" -isystem "/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd  CMakeFiles/cmTC_bd3fd.dir/src.c.obj -o cmTC_bd3fd   && :
+        
+      exitCode: 0
 ...

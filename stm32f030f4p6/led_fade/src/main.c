@@ -18,13 +18,13 @@ void main(void){
             printk("LED STATUS: %d\n",i);
             k_usleep(10);
         }
-        k_sleep(K_SECONDS(1));
+        k_msleep(300);
 
         for(int i = 10000;i>0;i--){
             ret = pwm_set_pulse_dt(&led,i);
             printk("LED STATUS: %d\n",i);
             k_usleep(10);
         }
-        k_sleep(K_SECONDS(1));
+        k_msleep(300);
     }
 }

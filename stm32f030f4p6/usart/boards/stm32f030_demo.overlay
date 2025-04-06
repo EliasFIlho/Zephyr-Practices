@@ -1,0 +1,8 @@
+/{
+    leds {
+        compatible = "gpio-leds";
+        led_0:led_0 {
+            gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+        };
+    };
+};

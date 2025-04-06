@@ -865,7 +865,7 @@
  status = "okay";
 };
 # 0 "<command-line>" 2
-# 1 "/home/elias/zephyrproject/applications/led_fade/boards/esp32_devkit_wroom.overlay" 1
+# 1 "/home/elias/zephyrproject/applications/esp32_pratices/led_fade/boards/esp32_devkit_wroom.overlay" 1
 /{
     pwmleds {
         compatible = "pwm-leds";

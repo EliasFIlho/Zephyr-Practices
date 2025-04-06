@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x400837cc
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          1450604 (bytes into file)
+  Start of section headers:          1450932 (bytes into file)
   Flags:                             0x300
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -52,17 +52,17 @@ Section Headers:
   [28] .debug_aranges    PROGBITS        00000000 023420 002160 00      0   0  8
   [29] .debug_info       PROGBITS        00000000 025580 07d44e 00      0   0  1
   [30] .debug_abbrev     PROGBITS        00000000 0a29ce 012f38 00      0   0  1
-  [31] .debug_line       PROGBITS        00000000 0b5906 051de3 00      0   0  1
-  [32] .debug_frame      PROGBITS        00000000 1076ec 004ab0 00      0   0  4
-  [33] .debug_str        PROGBITS        00000000 10c19c 014a97 01  MS  0   0  1
-  [34] .debug_loc        PROGBITS        00000000 120c33 0220e6 00      0   0  1
-  [35] .debug_ranges     PROGBITS        00000000 142d20 004ec8 00      0   0  8
-  [36] .xtensa.info      NOTE            00000000 147be8 000038 00      0   0  1
-  [37] .xt.prop          PROGBITS        00000000 147c20 009d14 00      0   0  1
-  [38] .xt.lit           PROGBITS        00000000 151934 000610 00      0   0  1
-  [39] .symtab           SYMTAB          00000000 151f44 007120 10     40 481  4
-  [40] .strtab           STRTAB          00000000 159064 008fd7 00      0   0  1
-  [41] .shstrtab         STRTAB          00000000 16203b 00022e 00      0   0  1
+  [31] .debug_line       PROGBITS        00000000 0b5906 051ef1 00      0   0  1
+  [32] .debug_frame      PROGBITS        00000000 1077f8 004ab0 00      0   0  4
+  [33] .debug_str        PROGBITS        00000000 10c2a8 014ad3 01  MS  0   0  1
+  [34] .debug_loc        PROGBITS        00000000 120d7b 0220e6 00      0   0  1
+  [35] .debug_ranges     PROGBITS        00000000 142e68 004ec8 00      0   0  8
+  [36] .xtensa.info      NOTE            00000000 147d30 000038 00      0   0  1
+  [37] .xt.prop          PROGBITS        00000000 147d68 009d14 00      0   0  1
+  [38] .xt.lit           PROGBITS        00000000 151a7c 000610 00      0   0  1
+  [39] .symtab           SYMTAB          00000000 15208c 007120 10     40 481  4
+  [40] .strtab           STRTAB          00000000 1591ac 008fd7 00      0   0  1
+  [41] .shstrtab         STRTAB          00000000 162183 00022e 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
