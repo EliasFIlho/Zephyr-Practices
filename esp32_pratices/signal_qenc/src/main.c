@@ -20,6 +20,27 @@ const struct device *encoder = DEVICE_DT_GET(DT_ALIAS(qdec0));
 
 #define FLAGS (PWM_CAPTURE_TYPE_PULSE | PWM_POLARITY_NORMAL)
 
+static bool isForward;
+static int prev_count = 0;
+static int current_count = 0;
+
+static int get_pulse_count()
+{
+    rc = sensor_sample_fetch_chan(encoder, SENSOR_CHAN_ROTATION);
+    if (rc != 0)
+    {
+        printk("Failed to fetch sample (%d)\n", rc);
+    }
+
+    rc = sensor_channel_get(encoder, SENSOR_CHAN_ROTATION, &val);
+    if (rc != 0)
+    {
+        printk("Failed to get data (%d)\n", rc);
+    }
+
+    return val.val1;
+}
+
 static void capture_handler(const struct device *dev, uint32_t channel, uint32_t period_cycles, uint32_t pulse_cycles, int status, void *user_data)
 {
     if (status != 0)
@@ -28,23 +49,19 @@ static void capture_handler(const struct device *dev, uint32_t channel, uint32_t
     }
     else
     {
-        rc = sensor_sample_fetch_chan(encoder,SENSOR_CHAN_ROTATION);
-		if (rc != 0) {
-			printk("Failed to fetch sample (%d)\n", rc);
-			
-		}
-
-		rc = sensor_channel_get(encoder, SENSOR_CHAN_ROTATION, &val);
-		if (rc != 0) {
-			printk("Failed to get data (%d)\n", rc);
-
-		}
+        current_count = get_pulse_count();
+        if (current_count < prev_count){
+            isForward = false;
+        }else{
+            isForward = true;
+        }
+        prev_count = current_count;
 
         double frequency = 1.0 / ((double)period_cycles / (double)CLK_FREQUENCY);
 
-        double duty = ((double)pulse_cycles/(double)period_cycles)*100.0;
-        
-        printk("%f,%f,%d\n", frequency, duty,val.val1);
+        double duty = ((double)pulse_cycles / (double)period_cycles) * 100.0;
+
+        printk("%f,%f,%d,%d\n", frequency, duty, current_count,isForward);
     }
 }
 
@@ -74,14 +91,16 @@ static bool check_pwms_devices()
     return true;
 }
 
-
 static bool set_pwm_pulse_output_percent(uint8_t pulse_percent)
 {
     int pulse_value;
-    if(pulse_percent > 100){
+    if (pulse_percent > 100)
+    {
         return false;
-    }else{
-        pulse_value = (pulse_percent*PWM_PERIOD_NSEC)/100;
+    }
+    else
+    {
+        pulse_value = (pulse_percent * PWM_PERIOD_NSEC) / 100;
     }
     int err;
     err = pwm_set(pwm.dev, pwm.channel, PWM_PERIOD_NSEC, pulse_value, PWM_POLARITY_NORMAL);
@@ -102,18 +121,18 @@ int main(void)
     check_pwms_devices();
     pwm_configure_capture(cap.dev, cap.channel, (PWM_CAPTURE_TYPE_BOTH | PWM_CAPTURE_MODE_CONTINUOUS), capture_handler, NULL);
     pwm_enable_capture(cap.dev, cap.channel);
+
+    if (!device_is_ready(encoder))
+    {
+        printk("Qdec device is not ready\n");
+        return 0;
+    }
+    prev_count = get_pulse_count();
     set_pwm_pulse_output_percent(50);
-
-    
-
-    if (!device_is_ready(encoder)) {
-		printk("Qdec device is not ready\n");
-		return 0;
-	}
 
     while (1)
     {
-        
+
         k_sleep(K_SECONDS(1));
     }
     return 0;
