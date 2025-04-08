@@ -6,8 +6,7 @@ static const struct pwm_dt_spec pwm = PWM_DT_SPEC_GET_BY_IDX(DT_NODELABEL(motor)
 
 static const struct pwm_dt_spec cap = PWM_DT_SPEC_GET_BY_IDX(DT_NODELABEL(motor), 1);
 
-#define PWM_PERIOD_NSEC 100000
-#define PWM_PULSE_NSEC 2500
+#define PWM_PERIOD_NSEC 200000000
 
 #define CLK_FREQUENCY 80000000
 
@@ -25,6 +24,7 @@ static void capture_handler(const struct device *dev, uint32_t channel, uint32_t
     else
     {
         double frequency = 1.0 / ((double)period_cycles / (double)CLK_FREQUENCY);
+
         double duty = ((double)pulse_cycles/(double)period_cycles)*100.0;
         printk("Period Frequency: [%f] Hz\nPulse Cycles: [%f]\n", frequency, duty);
     }
@@ -56,21 +56,6 @@ static bool check_pwms_devices()
     return true;
 }
 
-static bool set_pwm_pulse_output_dft()
-{
-    int err;
-    err = pwm_set(pwm.dev, pwm.channel, PWM_PERIOD_NSEC, PWM_PULSE_NSEC, PWM_POLARITY_NORMAL);
-    if (err != 0)
-    {
-        printk("Error to set pwm out: Err{%d}\n", err);
-        return false;
-    }
-    else
-    {
-        printk("PWM seted with a period of {%d} and pulse period of {%d}\n", PWM_PERIOD_NSEC, PWM_PULSE_NSEC);
-        return true;
-    }
-}
 
 static bool set_pwm_pulse_output_percent(uint8_t pulse_percent)
 {
@@ -99,18 +84,19 @@ int main(void)
     check_pwms_devices();
     pwm_configure_capture(cap.dev, cap.channel, (PWM_CAPTURE_TYPE_BOTH | PWM_CAPTURE_MODE_CONTINUOUS), capture_handler, NULL);
     pwm_enable_capture(cap.dev, cap.channel);
-    uint8_t PULSES[21] = {1,5,10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65,70,75,80,85,90,95,100};
+    set_pwm_pulse_output_percent(50);
+    //uint8_t PULSES[21] = {1,5,10, 15, 20, 25, 30,35, 40, 45, 50, 55, 60, 65,70,75,80,85,90,95,100};
 
     while (1)
     {
         
-        for (int i = 0; i < 21  ; i++)
-        {
-            set_pwm_pulse_output_percent(PULSES[i]);
-            k_msleep(500);
-            set_pwm_pulse_output_percent(0);
-            k_msleep(1000);
-        }
+    //     for (int i = 0; i < 21  ; i++)
+    //     {
+    //   //      set_pwm_pulse_output_percent(PULSES[i]);
+    //         k_msleep(500);
+    //         set_pwm_pulse_output_percent(0);
+    //         k_msleep(1000);
+    //     }
 
         k_sleep(K_SECONDS(1));
     }

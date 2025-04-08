@@ -1,0 +1,45 @@
+/{
+    leds {
+        compatible = "gpio-leds";
+        led_0:led_0 {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+        };
+    };
+
+    aliases {
+		qdec0 = &pcnt;
+	};
+
+
+};
+
+&pinctrl {
+    pcnt_default: pcnt_default {
+        group1 {
+            pinmux = <PCNT0_CH0SIG_GPIO14>,
+                    <PCNT0_CH0CTRL_GPIO15>;
+            bias-pull-up;
+        };
+    };
+};
+
+&pcnt {
+    pinctrl-0 = <&pcnt_default>;
+    pinctrl-names = "default";
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+    unit0@0 {
+      reg = <0>;
+      #address-cells = <1>;
+      #size-cells = <0>;
+      filter = <100>;
+      channelA@0 {
+          reg = <0>;
+          sig-pos-mode = <2>;
+          sig-neg-mode = <1>;
+          ctrl-h-mode = <0>;
+          ctrl-l-mode = <1>;
+      };
+    };
+};

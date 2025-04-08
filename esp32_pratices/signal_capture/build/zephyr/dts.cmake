@@ -345,7 +345,7 @@ set_target_properties(devicetree_target PROPERTIES "DT_REG|/soc/ledc@3ff59000|SI
 set_target_properties(devicetree_target PROPERTIES "DT_NODE|/soc/mcpwm@3ff5e000" TRUE)
 set_target_properties(devicetree_target PROPERTIES "DT_NODELABEL|mcpwm0" "/soc/mcpwm@3ff5e000")
 set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|prescale" "7")
-set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|prescale-timer0" "9")
+set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|prescale-timer0" "99")
 set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|pinctrl-names" "default;")
 set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|status" "okay")
 set_target_properties(devicetree_target PROPERTIES "DT_PROP|/soc/mcpwm@3ff5e000|compatible" "espressif,esp32-mcpwm;")

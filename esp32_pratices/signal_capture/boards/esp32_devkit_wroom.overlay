@@ -29,7 +29,7 @@
     pinctrl-0 = <&mcpwm0_default>;
     pinctrl-names = "default";
     prescale = <7>;
-    prescale-timer0 = <9>;
+    prescale-timer0 = <99>;
     status = "okay";
 };
 
