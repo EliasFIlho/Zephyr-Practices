@@ -7,6 +7,8 @@ static const struct pwm_dt_spec pwm = PWM_DT_SPEC_GET_BY_IDX(DT_NODELABEL(motor)
 
 static const struct pwm_dt_spec cap = PWM_DT_SPEC_GET_BY_IDX(DT_NODELABEL(motor), 1);
 
+static const struct pwm_dt_spec cap_2 = PWM_DT_SPEC_GET_BY_IDX(DT_NODELABEL(motor), 2);
+
 struct sensor_value val;
 int rc;
 const struct device *encoder = DEVICE_DT_GET(DT_ALIAS(qdec0));
@@ -14,6 +16,11 @@ const struct device *encoder = DEVICE_DT_GET(DT_ALIAS(qdec0));
 #define PWM_PERIOD_NSEC 200000000
 
 #define CLK_FREQUENCY 80000000
+
+#define PULSE_COUTER_PER_REVOLUTION 11.0 // 11 pulse couter for 1 shaft revolution so 1/11 revolutions per pulse
+#define GEAR_RATIO 4.4                   // Gear ratio of 4.4:1 so 4.4 revolutions for 1 shaft revolution
+
+#define SHAFT_REVOLUTION_RATIO (PULSE_COUTER_PER_REVOLUTION * GEAR_RATIO)
 
 #define PWM_POLARITY_INVERTED (1 << 0)
 #define PWM_POLARITY_NORMAL (0 << 0)
@@ -41,6 +48,16 @@ static int get_pulse_count()
     return val.val1;
 }
 
+static void capture_handler_2(const struct device *dev, uint32_t channel, uint32_t period_cycles, uint32_t pulse_cycles, int status, void *user_data)
+{
+    if (status != 0)
+    {
+        printk("Error to capture - status: [%d]", status);
+    }else{
+        printk("Pulse from cap 1: %d\n",pulse_cycles);
+    }
+}
+
 static void capture_handler(const struct device *dev, uint32_t channel, uint32_t period_cycles, uint32_t pulse_cycles, int status, void *user_data)
 {
     if (status != 0)
@@ -49,19 +66,26 @@ static void capture_handler(const struct device *dev, uint32_t channel, uint32_t
     }
     else
     {
-        current_count = get_pulse_count();
-        if (current_count < prev_count){
-            isForward = false;
-        }else{
-            isForward = true;
-        }
-        prev_count = current_count;
+        // printk("From device: %s\n", dev->name);
+        // current_count = get_pulse_count();
+        // if (current_count < prev_count)
+        // {
+        //     isForward = false;
+        // }
+        // else
+        // {
+        //     isForward = true;
+        // }
+        // prev_count = current_count;
 
-        double frequency = 1.0 / ((double)period_cycles / (double)CLK_FREQUENCY);
+        // double frequency = 1.0 / ((double)period_cycles / (double)CLK_FREQUENCY);
 
-        double duty = ((double)pulse_cycles / (double)period_cycles) * 100.0;
+        double rpm = (frequency * 60.0) / (SHAFT_REVOLUTION_RATIO);
 
-        printk("%f,%f,%d,%d\n", frequency, duty, current_count,isForward);
+        // double duty = ((double)pulse_cycles / (double)period_cycles) * 100.0;
+        printk("Pulse from cap 0: %d\n",pulse_cycles);
+
+        // printk("%f,%f,%d,%.2f,%d\n", frequency, duty, current_count,rpm,isForward);
     }
 }
 
@@ -81,6 +105,15 @@ static bool check_pwms_devices()
     if (device_is_ready(cap.dev))
     {
         printk("Looks like out is ready!!\nDevice channel: {%d}\nDevice period: {%d}\n", cap.channel, cap.period);
+    }
+    else
+    {
+        printk("F out is not ready yet\n");
+        return false;
+    }
+    if (device_is_ready(cap_2.dev))
+    {
+        printk("Looks like out is ready!!\nDevice channel: {%d}\nDevice period: {%d}\n", cap_2.channel, cap_2.period);
     }
     else
     {
@@ -120,7 +153,9 @@ int main(void)
 
     check_pwms_devices();
     pwm_configure_capture(cap.dev, cap.channel, (PWM_CAPTURE_TYPE_BOTH | PWM_CAPTURE_MODE_CONTINUOUS), capture_handler, NULL);
+    pwm_configure_capture(cap_2.dev, cap_2.channel, (PWM_CAPTURE_TYPE_BOTH | PWM_CAPTURE_MODE_CONTINUOUS), capture_handler_2, NULL);
     pwm_enable_capture(cap.dev, cap.channel);
+    pwm_enable_capture(cap_2.dev, cap_2.channel);
 
     if (!device_is_ready(encoder))
     {

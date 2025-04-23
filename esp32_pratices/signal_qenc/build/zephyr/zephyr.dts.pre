@@ -873,7 +873,8 @@
     motor:motor{
         compatible = "cruise,motor";
         pwms = <&mcpwm0 0 0 (0 << 0)>,
-         <&mcpwm0 6 0 (0 << 0)>;
+         <&mcpwm0 6 0 (0 << 0)>,
+               <&mcpwm0 7 0 (0 << 0)>;
     };
 
     aliases {
@@ -891,6 +892,11 @@
         };
         group2 {
             pinmux = <(((14 & 0x3FU) << 0U) | ((109 & 0x1FFU) << 6U) | ((0x1FFU & 0x1FFU) << 15U))>;
+            output-enable;
+
+        };
+        group3 {
+            pinmux = <(((15 & 0x3FU) << 0U) | ((110 & 0x1FFU) << 6U) | ((0x1FFU & 0x1FFU) << 15U))>;
             output-enable;
         };
     };

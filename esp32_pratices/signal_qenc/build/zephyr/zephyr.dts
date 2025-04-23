@@ -601,6 +601,10 @@
 				pinmux = < 0xff9b4e >;
 				output-enable;
 			};
+			group3 {
+				pinmux = < 0xff9b8f >;
+				output-enable;
+			};
 		};
 		pcnt_default: pcnt_default {
 			phandle = < 0x7 >;
@@ -620,6 +624,6 @@
 	};
 	motor: motor {
 		compatible = "cruise,motor";
-		pwms = < &mcpwm0 0x0 0x0 0x0 >, < &mcpwm0 0x6 0x0 0x0 >;
+		pwms = < &mcpwm0 0x0 0x0 0x0 >, < &mcpwm0 0x6 0x0 0x0 >, < &mcpwm0 0x7 0x0 0x0 >;
 	};
 };

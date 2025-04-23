@@ -5,7 +5,8 @@
     motor:motor{
         compatible = "cruise,motor";
         pwms = <&mcpwm0 0 0 PWM_POLARITY_NORMAL>,
-		       <&mcpwm0 6 0 PWM_POLARITY_NORMAL>;
+		       <&mcpwm0 6 0 PWM_POLARITY_NORMAL>,
+               <&mcpwm0 7 0 PWM_POLARITY_NORMAL>;
     };
     
     aliases {
@@ -23,6 +24,11 @@
         };
         group2 {
             pinmux = <MCPWM0_CAP0_GPIO14>;
+            output-enable;
+
+        };
+        group3 {
+            pinmux = <MCPWM0_CAP1_GPIO15>;
             output-enable;
         };
     };
