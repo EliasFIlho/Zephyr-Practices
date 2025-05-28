@@ -5,20 +5,17 @@
 #include <zephyr/drivers/can.h>
 
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_NODELABEL(led_0), gpios);
-static const struct device *const can_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_canbus));
-
+static const struct device *can_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_canbus));
 
 void rx_callback_function(const struct device *dev, struct can_frame *frame, void *user_data)
 {
     printk("\nFRAME ID: [%d]", frame->id);
     printk("FRAME DLC: [%d]", frame->dlc);
-    for(int i = 0; i< frame->dlc;i++){
-        printk("Frame[%d]: %d ",i,frame->data[i]);
+    for (int i = 0; i < frame->dlc; i++)
+    {
+        printk("Frame[%d]: %d ", i, frame->data[i]);
     }
-    
 }
-
-
 
 struct can_frame can_frame = {
     .flags = 0,
@@ -26,12 +23,10 @@ struct can_frame can_frame = {
     .dlc = 8,
     .data = {1, 2, 3, 4, 5, 6, 7, 8}};
 
-
 const struct can_filter my_filter = {
-        .flags = 0,
-        .id = 0x123,
-        .mask = 0
-};
+    .flags = 0,
+    .id = 0x123,
+    .mask = 0};
 
 void send_can_data()
 {
@@ -48,31 +43,12 @@ void main(void)
     int filter;
     // check can device
 
-    if (!device_is_ready(can_dev))
-    {
-        printk("Error to init can\n");
-        return;
-    }
-    else
-    {
-        printk("CAN OK\n");
-        ret = can_set_mode(can_dev, CAN_MODE_LOOPBACK);
-        if (ret != 0)
-        {
-            printk("Error to set can mode\n");
-        }
-
-        ret = can_start(can_dev);
-        if (ret != 0)
-        {
-            printk("Error start can [%d]\n", ret);
-            k_sleep(K_MSEC(10000));
-        }
-        else
-        {
-            filter = can_add_rx_filter(can_dev, rx_callback_function, NULL, &my_filter);
-        }
-    }
+    __ASSERT(device_is_ready(can_dev) == true, "can device not ready");
+    __ASSERT(can_set_mode(can_dev, CAN_MODE_LOOPBACK) == 0, "can_start() returned != zero!");
+    filter = can_add_rx_filter(can_dev, rx_callback_function, NULL, &my_filter);
+    __ASSERT(can_start(can_dev) == 0, "can_start() returned != zero!");
+    
+    printk("CAN OK\n");
 
     if (!device_is_ready(led.port))
     {
@@ -93,7 +69,7 @@ void main(void)
 
     while (1)
     {
-        //printk("Hello, Zephyr!\n");
+        // printk("Hello, Zephyr!\n");
         ret = gpio_pin_toggle_dt(&led);
         send_can_data();
         k_sleep(K_MSEC(500));
