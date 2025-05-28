@@ -87,7 +87,7 @@ int main(void)
              "\r\n",
              HTTP_REQUEST_URL, HTTP_REQUEST_HOST);
 
-    ret = zsock_send(sock,request_buffer,sizeof(request_buffer),0);
+    ret = zsock_send(sock, request_buffer, sizeof(request_buffer), 0);
 
     if (ret < 0)
     {
@@ -99,12 +99,26 @@ int main(void)
         printk("Socket sended data!!\n\r");
     }
 
-        
-
+    int len;
+    int rx_total = 0;
     while (1)
     {
-        k_msleep(100);
+        len = zsock_recv(sock, response, sizeof(response) - 1, 0);
+        
+        if(len < 0){
+            printk("Error[%d]: Socket could not read data - %s\n\r", errno, strerror(errno));
+            return 0;
+        }
+
+        if(len == 0){
+            break;
+        }
+
+        response[len] = '\0';
+        printk("%s",response);
+        rx_total += len;
     }
+    printk("Total amount of bytes received: %d",rx_total);
 
     zsock_close(sock);
 
