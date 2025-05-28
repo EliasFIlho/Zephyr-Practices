@@ -21,6 +21,8 @@ LOG_MODULE_REGISTER(MAIN);
 #define HTTP_REQUEST_HOST "google.com"
 #define HTTP_REQUEST_URL "/"
 
+#define SOCKET_CONNECTION_MAX_ATTEMPT 3
+
 char response[512];
 
 int main(void)
@@ -66,7 +68,18 @@ int main(void)
         printk("Socket created!!\n\r");
     }
 
-    ret = zsock_connect(sock, res->ai_addr, res->ai_addrlen);
+    for (int i = 0; i < SOCKET_CONNECTION_MAX_ATTEMPT; i++)
+    {
+        ret = zsock_connect(sock, res->ai_addr, res->ai_addrlen);
+        if (ret == 0)
+        {
+            break;
+        }
+        else
+        {
+            printk("Error[%d]: Socket could not connect - %s\n\r", errno, strerror(errno));
+        }
+    }
 
     if (ret < 0)
     {
@@ -104,23 +117,26 @@ int main(void)
     while (1)
     {
         len = zsock_recv(sock, response, sizeof(response) - 1, 0);
-        
-        if(len < 0){
+
+        if (len < 0)
+        {
             printk("Error[%d]: Socket could not read data - %s\n\r", errno, strerror(errno));
             return 0;
         }
 
-        if(len == 0){
+        if (len == 0)
+        {
             break;
         }
 
         response[len] = '\0';
-        printk("%s",response);
+        printk("%s", response);
         rx_total += len;
     }
-    printk("Total amount of bytes received: %d",rx_total);
+    printk("Total amount of bytes received: %d\n\r", rx_total);
 
     zsock_close(sock);
+    wifi_disconnect();
 
     return 0;
 }
