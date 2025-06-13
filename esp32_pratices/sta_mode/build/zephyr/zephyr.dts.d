@@ -1,6 +1,6 @@
 empty_file.o: /home/elias/zephyrproject/zephyr/misc/empty_file.c \
- /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc_wroom/esp32_devkitc_wroom_procpu.dts \
- /home/elias/zephyrproject/zephyr/dts/xtensa/espressif/esp32/esp32_wroom_32ue_n4.dtsi \
+ /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts \
+ /home/elias/zephyrproject/zephyr/dts/xtensa/espressif/esp32/esp32_wrover_e_n4r8.dtsi \
  /home/elias/zephyrproject/zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi \
  /home/elias/zephyrproject/zephyr/dts/common/mem.h \
  /home/elias/zephyrproject/zephyr/dts/common/freq.h \
@@ -22,11 +22,10 @@ empty_file.o: /home/elias/zephyrproject/zephyr/misc/empty_file.c \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/interrupt-controller/esp-xtensa-intmux.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/esp32-pinctrl.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
- /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc_wroom/esp32_devkitc_wroom-pinctrl.dtsi \
+ /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc-pinctrl.dtsi \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/esp-pinctrl-common.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/esp32-gpio-sigmap.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/dt-bindings/input/esp32-touch-sensor-input.h \
- /home/elias/zephyrproject/zephyr/dts/common/espressif/partitions_0x1000_amp.dtsi \
- /home/elias/zephyrproject/zephyr/dts/common/espressif/partitions_0x1000_amp_4M.dtsi \
- /home/elias/zephyrproject/applications/esp32_pratices/sta_mode/boards/esp32_devkitc_wroom_procpu.overlay
+ /home/elias/zephyrproject/zephyr/dts/vendor/espressif/partitions_0x1000_amp.dtsi \
+ /home/elias/zephyrproject/zephyr/dts/vendor/espressif/partitions_0x1000_amp_4M.dtsi

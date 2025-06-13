@@ -24,12 +24,12 @@
 #define __z_interrupt_stack_SIZEOF 0x800
 #define __z_interrupt_all_stacks_SIZEOF 0x800
 #define _PM_DEVICE_STRUCT_FLAGS_OFFSET 0x0
-#define ___xtensa_irq_bsa_t_SIZEOF 0x44
+#define ___xtensa_irq_bsa_t_SIZEOF 0x4c
 #define ___xtensa_irq_stack_frame_raw_t_SIZEOF 0x34
-#define ___xtensa_irq_stack_frame_a15_t_SIZEOF 0x78
-#define ___xtensa_irq_stack_frame_a11_t_SIZEOF 0x68
-#define ___xtensa_irq_stack_frame_a7_t_SIZEOF 0x58
-#define ___xtensa_irq_stack_frame_a3_t_SIZEOF 0x48
+#define ___xtensa_irq_stack_frame_a15_t_SIZEOF 0x80
+#define ___xtensa_irq_stack_frame_a11_t_SIZEOF 0x70
+#define ___xtensa_irq_stack_frame_a7_t_SIZEOF 0x60
+#define ___xtensa_irq_stack_frame_a3_t_SIZEOF 0x50
 #define ___xtensa_irq_bsa_t_a0_OFFSET 0x24
 #define ___xtensa_irq_bsa_t_scratch_OFFSET 0x28
 #define ___xtensa_irq_bsa_t_a2_OFFSET 0x2c

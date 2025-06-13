@@ -9,10 +9,11 @@ zephyr/linker_zephyr_pre0.cmd: \
   zephyr/include/generated/zephyr/autoconf.h \
   zephyr/include/generated/zephyr/devicetree_generated.h \
   zephyr/include/generated/zephyr/offsets.h \
-  /home/elias/zephyrproject/zephyr/subsys/net/l2/wifi/wifi_nm.ld \
+  /home/elias/zephyrproject/zephyr/subsys/net/conn_mgr/conn_mgr.ld \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree.h \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/can.h \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/clocks.h \
+  /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/display.h \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/dma.h \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/fixed-partitions.h \
   /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/gpio.h \

@@ -14,6 +14,7 @@ static void * const no_syscall_impl Z_GENERIC_SECTION(llext_no_syscall_impl);
  * linker outside this file will be exported as NULL and simply fail when
  * an extension requiring them is loaded.
  */
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_device_deinit;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_device_get_binding;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_device_get_by_dt_nodelabel;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_device_init;
@@ -64,10 +65,15 @@ extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_object_alloc_size;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_object_release;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_alloc_init;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_buffer_flush;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_close;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_flush;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_get;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_init;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_put;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_read;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_read_avail;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_reset;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_write;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_pipe_write_avail;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_poll;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_poll_signal_check;

@@ -42,3 +42,13 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/modules/ti/simplelink/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/modules/ti/simplelink_lpf3/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/modules/ti/mspm0/cmake_install.cmake")
+endif()
+

@@ -89,6 +89,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/subsys/pmci/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/subsys/portability/cmake_install.cmake")
 endif()
 

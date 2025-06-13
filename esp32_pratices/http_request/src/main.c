@@ -10,20 +10,20 @@
 #include <zephyr/net/dhcpv4_server.h>
 #include <zephyr/net/socket.h>
 #include <zephyr/net/http/client.h>
-#include "wifi.h"
 #include <string.h>
+#include "wifi.h"
 
 LOG_MODULE_REGISTER(MAIN);
 
 /* STA Mode Configuration */
-#define WIFI_SSID "WIFI"
-#define WIFI_PSK "PASS"
+#define WIFI_SSID "LINKCE- 2G"
+#define WIFI_PSK "20122000"
 
 #define HTTP_REQUEST_HOST "google.com"
+#define HTTP_REQUEST_PORT "80"
 
 #define HTTP_RECV_BUF_LEN 512
 #define HTTP_REQUEST_TIMEOUT 3000
-
 
 // Globals
 static uint8_t recv_buf[HTTP_RECV_BUF_LEN];
@@ -51,7 +51,7 @@ static void response_callback(struct http_response *resp,
     printk("Received data:\r\n%s\r\n", temp_buf);
 }
 
-void print_addrinfo(struct zsock_addrinfo **results)
+static void print_addrinfo(struct zsock_addrinfo **results)
 {
     char ipv4[INET_ADDRSTRLEN];
     char ipv6[INET6_ADDRSTRLEN];
@@ -83,7 +83,7 @@ void print_addrinfo(struct zsock_addrinfo **results)
 
 int main(void)
 {
-    k_sleep(K_SECONDS(5));
+    k_sleep(K_SECONDS(3));
 
     // Init TCP socket
     struct zsock_addrinfo hints = {0};
@@ -95,13 +95,13 @@ int main(void)
 
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
-
+    printk("Initing wifi...\r\n");
     wifi_init();
     connect_to_wifi(WIFI_SSID, WIFI_PSK);
 
     wait_wifi_connect();
 
-    ret = zsock_getaddrinfo(HTTP_REQUEST_HOST, "80", &hints, &res);
+    ret = zsock_getaddrinfo(HTTP_REQUEST_HOST, HTTP_REQUEST_PORT, &hints, &res);
     if (ret != 0)
     {
         printk("Error[%d]: Could not get addr info from DNS host [%s] - %s\n\r", errno, HTTP_REQUEST_HOST, strerror(errno));
@@ -116,46 +116,43 @@ int main(void)
 
     sock = zsock_socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 
-    ret = zsock_connect(sock, res->ai_addr, res->ai_addrlen);
-
-    if (ret < 0)
-    {
-        printk("Error[%d]: Socket could not connect - %s\n\r", errno, strerror(errno));
-        wifi_disconnect();
-        return 0;
-    }
-    else
-    {
-        printk("Socket connected!!\n\r");
-    }
-
     memset(&req, 0, sizeof(req));
     req.method = HTTP_GET;
     req.url = "/";
     req.protocol = "HTTP/1.1";
-    req.port = "80";
+    req.port = HTTP_REQUEST_PORT;
     req.host = HTTP_REQUEST_HOST;
     req.response = response_callback;
     req.recv_buf = recv_buf;
     req.recv_buf_len = sizeof(recv_buf);
 
+    ret = zsock_connect(sock, res->ai_addr, res->ai_addrlen);
 
-    ret = http_client_req(sock, &req, HTTP_REQUEST_TIMEOUT, NULL);
-    if (ret >= 0)
+    if (ret < 0)
     {
-        printk("Amount of Sent data: %d\n\r", ret);
+        printk("Error[%d]: Socket could not connect - %s\n\r", errno, strerror(errno));
     }
     else
     {
-        printk("Error to send data: %d\n\r",ret);
+        printk("Socket connected!!\n\r");
     }
-
     while (1)
     {
-        printk("Main thread\r\n");
-        k_sleep(K_SECONDS(1));
+
+        ret = http_client_req(sock, &req, HTTP_REQUEST_TIMEOUT, NULL);
+        if (ret >= 0)
+        {
+            printk("Amount of Sent data: %d\n\r", ret);
+        }
+        else
+        {
+            printk("Error to send data: %d\n\r", ret);
+        }
+
+        k_sleep(K_SECONDS(5));
     }
 
+    zsock_close(sock);
     wifi_disconnect();
 
     return 0;

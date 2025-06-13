@@ -39,6 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/drivers/ethernet/dsa/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/drivers/ethernet/phy/cmake_install.cmake")
 endif()
 
@@ -49,7 +54,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/drivers/ethernet/nxp_enet/cmake_install.cmake")
+  include("/home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/drivers/ethernet/nxp_imx_netc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

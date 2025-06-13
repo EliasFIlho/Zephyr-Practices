@@ -15,8 +15,8 @@
 LOG_MODULE_REGISTER(MAIN);
 
 /* STA Mode Configuration */
-#define WIFI_SSID "LINKCE- 2G" /* Replace `SSID` with WiFi ssid. */
-#define WIFI_PSK "20122000"    /* Replace `PASSWORD` with Router password. */
+#define WIFI_SSID "" /* Replace `SSID` with WiFi ssid. */
+#define WIFI_PSK ""    /* Replace `PASSWORD` with Router password. */
 
 #define HTTP_REQUEST_HOST "google.com"
 #define HTTP_REQUEST_URL "/"

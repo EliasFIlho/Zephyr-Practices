@@ -745,6 +745,14 @@
     ],
     [
         [
+            "int device_deinit",
+            "const struct device *dev"
+        ],
+        "device.h",
+        true
+    ],
+    [
+        [
             "const struct device *device_get_by_dt_nodelabel",
             "const char *nodelabel"
         ],
@@ -1353,6 +1361,14 @@
     ],
     [
         [
+            "void k_pipe_init",
+            "struct k_pipe *pipe, uint8_t *buffer, size_t buffer_size"
+        ],
+        "kernel.h",
+        true
+    ],
+    [
+        [
             "int k_pipe_alloc_init",
             "struct k_pipe *pipe, size_t size"
         ],
@@ -1402,6 +1418,38 @@
     [
         [
             "void k_pipe_buffer_flush",
+            "struct k_pipe *pipe"
+        ],
+        "kernel.h",
+        true
+    ],
+    [
+        [
+            "int k_pipe_write",
+            "struct k_pipe *pipe, const uint8_t *data, size_t len,\n\t\t\t   k_timeout_t timeout"
+        ],
+        "kernel.h",
+        true
+    ],
+    [
+        [
+            "int k_pipe_read",
+            "struct k_pipe *pipe, uint8_t *data, size_t len,\n\t\t\t  k_timeout_t timeout"
+        ],
+        "kernel.h",
+        true
+    ],
+    [
+        [
+            "void k_pipe_reset",
+            "struct k_pipe *pipe"
+        ],
+        "kernel.h",
+        true
+    ],
+    [
+        [
+            "void k_pipe_close",
             "struct k_pipe *pipe"
         ],
         "kernel.h",
@@ -1505,7 +1553,7 @@
     ],
     [
         [
-            "int sys_clock_hw_cycles_per_sec_runtime_get",
+            "unsigned int sys_clock_hw_cycles_per_sec_runtime_get",
             "void"
         ],
         "time_units.h",
@@ -2163,6 +2211,14 @@
         [
             "int counter_get_value_64",
             "const struct device *dev, uint64_t *ticks"
+        ],
+        "counter.h",
+        false
+    ],
+    [
+        [
+            "int counter_reset",
+            "const struct device *dev"
         ],
         "counter.h",
         false
@@ -2961,30 +3017,6 @@
     ],
     [
         [
-            "int kscan_config",
-            "const struct device *dev,\n\t\t\t     kscan_callback_t callback"
-        ],
-        "kscan.h",
-        false
-    ],
-    [
-        [
-            "int kscan_enable_callback",
-            "const struct device *dev"
-        ],
-        "kscan.h",
-        false
-    ],
-    [
-        [
-            "int kscan_disable_callback",
-            "const struct device *dev"
-        ],
-        "kscan.h",
-        false
-    ],
-    [
-        [
             "int led_blink",
             "const struct device *dev, uint32_t led,\n\t\t\t    uint32_t delay_on, uint32_t delay_off"
         ],
@@ -3714,23 +3746,15 @@
     [
         [
             "int stepper_enable",
-            "const struct device *dev, const bool enable"
+            "const struct device *dev"
         ],
         "stepper.h",
         false
     ],
     [
         [
-            "int stepper_move_by",
-            "const struct device *dev, int32_t micro_steps"
-        ],
-        "stepper.h",
-        false
-    ],
-    [
-        [
-            "int stepper_set_max_velocity",
-            "const struct device *dev, uint32_t micro_steps_per_second"
+            "int stepper_disable",
+            "const struct device *dev"
         ],
         "stepper.h",
         false
@@ -3769,6 +3793,30 @@
     ],
     [
         [
+            "int stepper_set_event_callback",
+            "const struct device *dev,\n\t\t\t\t\t stepper_event_callback_t callback, void *user_data"
+        ],
+        "stepper.h",
+        false
+    ],
+    [
+        [
+            "int stepper_set_microstep_interval",
+            "const struct device *dev,\n\t\t\t\t\t     uint64_t microstep_interval_ns"
+        ],
+        "stepper.h",
+        false
+    ],
+    [
+        [
+            "int stepper_move_by",
+            "const struct device *dev, int32_t micro_steps"
+        ],
+        "stepper.h",
+        false
+    ],
+    [
+        [
             "int stepper_move_to",
             "const struct device *dev, int32_t micro_steps"
         ],
@@ -3777,24 +3825,24 @@
     ],
     [
         [
+            "int stepper_run",
+            "const struct device *dev, enum stepper_direction direction"
+        ],
+        "stepper.h",
+        false
+    ],
+    [
+        [
+            "int stepper_stop",
+            "const struct device *dev"
+        ],
+        "stepper.h",
+        false
+    ],
+    [
+        [
             "int stepper_is_moving",
             "const struct device *dev, bool *is_moving"
-        ],
-        "stepper.h",
-        false
-    ],
-    [
-        [
-            "int stepper_run",
-            "const struct device *dev, enum stepper_direction direction,\n\t\t\t  uint32_t velocity"
-        ],
-        "stepper.h",
-        false
-    ],
-    [
-        [
-            "int stepper_set_event_callback",
-            "const struct device *dev,\n\t\t\t\t\t stepper_event_callback_t callback, void *user_data"
         ],
         "stepper.h",
         false
@@ -4426,6 +4474,14 @@
     [
         [
             "int rtio_sqe_cancel",
+            "struct rtio_sqe *sqe"
+        ],
+        "rtio.h",
+        false
+    ],
+    [
+        [
+            "void rtio_sqe_signal",
             "struct rtio_sqe *sqe"
         ],
         "rtio.h",

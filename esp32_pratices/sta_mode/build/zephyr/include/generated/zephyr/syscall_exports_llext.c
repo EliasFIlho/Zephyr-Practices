@@ -7,6 +7,7 @@
  */
 
 /* Symbol declarations */
+extern void * const z_impl_device_deinit;
 extern void * const z_impl_device_get_binding;
 extern void * const z_impl_device_get_by_dt_nodelabel;
 extern void * const z_impl_device_init;
@@ -57,10 +58,15 @@ extern void * const z_impl_k_object_alloc_size;
 extern void * const z_impl_k_object_release;
 extern void * const z_impl_k_pipe_alloc_init;
 extern void * const z_impl_k_pipe_buffer_flush;
+extern void * const z_impl_k_pipe_close;
 extern void * const z_impl_k_pipe_flush;
 extern void * const z_impl_k_pipe_get;
+extern void * const z_impl_k_pipe_init;
 extern void * const z_impl_k_pipe_put;
+extern void * const z_impl_k_pipe_read;
 extern void * const z_impl_k_pipe_read_avail;
+extern void * const z_impl_k_pipe_reset;
+extern void * const z_impl_k_pipe_write;
 extern void * const z_impl_k_pipe_write_avail;
 extern void * const z_impl_k_poll;
 extern void * const z_impl_k_poll_signal_check;
@@ -199,6 +205,7 @@ extern void * const z_impl_zvfs_poll;
 extern void * const z_impl_zvfs_select;
 
 /* Exported symbols */
+EXPORT_SYMBOL(z_impl_device_deinit);
 EXPORT_SYMBOL(z_impl_device_get_binding);
 EXPORT_SYMBOL(z_impl_device_get_by_dt_nodelabel);
 EXPORT_SYMBOL(z_impl_device_init);
@@ -249,10 +256,15 @@ EXPORT_SYMBOL(z_impl_k_object_alloc_size);
 EXPORT_SYMBOL(z_impl_k_object_release);
 EXPORT_SYMBOL(z_impl_k_pipe_alloc_init);
 EXPORT_SYMBOL(z_impl_k_pipe_buffer_flush);
+EXPORT_SYMBOL(z_impl_k_pipe_close);
 EXPORT_SYMBOL(z_impl_k_pipe_flush);
 EXPORT_SYMBOL(z_impl_k_pipe_get);
+EXPORT_SYMBOL(z_impl_k_pipe_init);
 EXPORT_SYMBOL(z_impl_k_pipe_put);
+EXPORT_SYMBOL(z_impl_k_pipe_read);
 EXPORT_SYMBOL(z_impl_k_pipe_read_avail);
+EXPORT_SYMBOL(z_impl_k_pipe_reset);
+EXPORT_SYMBOL(z_impl_k_pipe_write);
 EXPORT_SYMBOL(z_impl_k_pipe_write_avail);
 EXPORT_SYMBOL(z_impl_k_poll);
 EXPORT_SYMBOL(z_impl_k_poll_signal_check);

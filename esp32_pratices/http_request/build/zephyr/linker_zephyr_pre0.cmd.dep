@@ -1,5 +1,5 @@
 linker_zephyr_pre0.cmd: \
- /home/elias/zephyrproject/zephyr/soc/espressif/esp32/default.ld \
+ /home/elias/zephyrproject/zephyr/soc/espressif/common/../esp32/default.ld \
  /home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/include/generated/zephyr/autoconf.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/devicetree.h \
  /home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/include/generated/zephyr/devicetree_generated.h \
@@ -29,6 +29,7 @@ linker_zephyr_pre0.cmd: \
  /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/reset.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/mbox.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/port-endpoint.h \
+ /home/elias/zephyrproject/zephyr/include/zephyr/devicetree/display.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/sections.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/section_tags.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/linker-defs.h \
@@ -38,11 +39,11 @@ linker_zephyr_pre0.cmd: \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/linker-tool-gcc.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/kernel/mm.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/kernel/internal/mm.h \
- /home/elias/zephyrproject/zephyr/soc/espressif/esp32/memory.h \
+ /home/elias/zephyrproject/zephyr/soc/espressif/common/../esp32/memory.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/rel-sections.ld \
  /home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/include/generated/snippets-rwdata.ld \
  /home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/include/generated/snippets-data-sections.ld \
- /home/elias/zephyrproject/zephyr/include/../subsys/net/l2/wifi/wifi_nm.ld \
+ /home/elias/zephyrproject/zephyr/include/../subsys/net/conn_mgr/conn_mgr.ld \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/iterable_sections.h \
  /home/elias/zephyrproject/zephyr/include/zephyr/linker/common-ram.ld \
  /home/elias/zephyrproject/applications/esp32_pratices/http_request/build/zephyr/include/generated/snippets-ram-sections.ld \

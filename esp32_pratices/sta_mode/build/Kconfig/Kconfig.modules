@@ -22,6 +22,12 @@ config ZEPHYR_CMSIS_NN_MODULE
 	bool
 	default y
 endmenu
+menu "cmsis_6 (/home/elias/zephyrproject/modules/hal/cmsis_6)"
+osource "$(ZEPHYR_CMSIS_6_KCONFIG)"
+config ZEPHYR_CMSIS_6_MODULE
+	bool
+	default y
+endmenu
 menu "fatfs (/home/elias/zephyrproject/modules/fs/fatfs)"
 osource "$(ZEPHYR_FATFS_KCONFIG)"
 config ZEPHYR_FATFS_MODULE
@@ -31,9 +37,15 @@ endmenu
 config ZEPHYR_ADI_MODULE
 	bool
 	default y
-config ZEPHYR_ALTERA_MODULE
+menu "hal_afbr (/home/elias/zephyrproject/modules/hal/afbr)"
+osource "$(ZEPHYR_HAL_AFBR_KCONFIG)"
+config ZEPHYR_HAL_AFBR_MODULE
 	bool
 	default y
+
+config ZEPHYR_HAL_AFBR_MODULE_BLOBS
+	bool
+endmenu
 menu "hal_ambiq (/home/elias/zephyrproject/modules/hal/ambiq)"
 osource "$(ZEPHYR_HAL_AMBIQ_KCONFIG)"
 config ZEPHYR_HAL_AMBIQ_MODULE
@@ -43,6 +55,12 @@ endmenu
 config ZEPHYR_ATMEL_MODULE
 	bool
 	default y
+menu "hal_bouffalolab (/home/elias/zephyrproject/modules/hal/bouffalolab)"
+osource "$(ZEPHYR_HAL_BOUFFALOLAB_KCONFIG)"
+config ZEPHYR_HAL_BOUFFALOLAB_MODULE
+	bool
+	default y
+endmenu
 menu "hal_espressif (/home/elias/zephyrproject/modules/hal/espressif)"
 osource "/home/elias/zephyrproject/modules/hal/espressif/zephyr/Kconfig"
 config ZEPHYR_HAL_ESPRESSIF_MODULE
@@ -183,6 +201,9 @@ config ZEPHYR_LIBLC3_MODULE
 	bool
 	default y
 endmenu
+config ZEPHYR_LIBMCTP_MODULE
+	bool
+	default y
 config ZEPHYR_LIBMETAL_MODULE
 	bool
 	default y
@@ -199,7 +220,7 @@ config ZEPHYR_LORAMAC_NODE_MODULE
 	default y
 endmenu
 menu "lvgl (/home/elias/zephyrproject/modules/lib/gui/lvgl)"
-osource "/home/elias/zephyrproject/modules/lib/gui/lvgl/Kconfig"
+osource "/home/elias/zephyrproject/modules/lib/gui/lvgl/zephyr/Kconfig"
 config ZEPHYR_LVGL_MODULE
 	bool
 	default y

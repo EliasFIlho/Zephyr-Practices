@@ -72,8 +72,6 @@ list(APPEND sections "{NAME\;i3c_driver_api_area\;GROUP\;RODATA_REGION\;SUBALIGN
 list(APPEND section_settings "{SECTION\;i3c_driver_api_area\;SORT\;NAME\;KEEP\;TRUE\;INPUT\;._i3c_driver_api.static.*\;SYMBOLS\;_i3c_driver_api_list_start\;_i3c_driver_api_list_end}")
 list(APPEND sections "{NAME\;ipm_driver_api_area\;GROUP\;RODATA_REGION\;SUBALIGN\;4\;NOINPUT\;TRUE}")
 list(APPEND section_settings "{SECTION\;ipm_driver_api_area\;SORT\;NAME\;KEEP\;TRUE\;INPUT\;._ipm_driver_api.static.*\;SYMBOLS\;_ipm_driver_api_list_start\;_ipm_driver_api_list_end}")
-list(APPEND sections "{NAME\;kscan_driver_api_area\;GROUP\;RODATA_REGION\;SUBALIGN\;4\;NOINPUT\;TRUE}")
-list(APPEND section_settings "{SECTION\;kscan_driver_api_area\;SORT\;NAME\;KEEP\;TRUE\;INPUT\;._kscan_driver_api.static.*\;SYMBOLS\;_kscan_driver_api_list_start\;_kscan_driver_api_list_end}")
 list(APPEND sections "{NAME\;led_driver_api_area\;GROUP\;RODATA_REGION\;SUBALIGN\;4\;NOINPUT\;TRUE}")
 list(APPEND section_settings "{SECTION\;led_driver_api_area\;SORT\;NAME\;KEEP\;TRUE\;INPUT\;._led_driver_api.static.*\;SYMBOLS\;_led_driver_api_list_start\;_led_driver_api_list_end}")
 list(APPEND sections "{NAME\;led_strip_driver_api_area\;GROUP\;RODATA_REGION\;SUBALIGN\;4\;NOINPUT\;TRUE}")

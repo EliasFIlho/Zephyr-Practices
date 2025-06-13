@@ -379,6 +379,10 @@ uintptr_t z_mrsh_device_init(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
 __weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_device_deinit(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
 uintptr_t z_mrsh_device_get_by_dt_nodelabel(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
@@ -683,6 +687,10 @@ uintptr_t z_mrsh_k_msgq_num_used_get(uintptr_t arg1, uintptr_t arg2, uintptr_t a
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
 __weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_k_pipe_init(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
 uintptr_t z_mrsh_k_pipe_alloc_init(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
@@ -708,6 +716,22 @@ uintptr_t z_mrsh_k_pipe_flush(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
 
 __weak ALIAS_OF(handler_no_syscall)
 uintptr_t z_mrsh_k_pipe_buffer_flush(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_k_pipe_write(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_k_pipe_read(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_k_pipe_reset(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_k_pipe_close(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
 __weak ALIAS_OF(handler_no_syscall)
@@ -851,6 +875,7 @@ const _k_syscall_handler_t _k_syscall_table[K_SYSCALL_LIMIT] = {
 	[K_SYSCALL_DEVICE_GET_BINDING] = z_mrsh_device_get_binding,
 	[K_SYSCALL_DEVICE_IS_READY] = z_mrsh_device_is_ready,
 	[K_SYSCALL_DEVICE_INIT] = z_mrsh_device_init,
+	[K_SYSCALL_DEVICE_DEINIT] = z_mrsh_device_deinit,
 	[K_SYSCALL_DEVICE_GET_BY_DT_NODELABEL] = z_mrsh_device_get_by_dt_nodelabel,
 	[K_SYSCALL_K_THREAD_STACK_ALLOC] = z_mrsh_k_thread_stack_alloc,
 	[K_SYSCALL_K_THREAD_STACK_FREE] = z_mrsh_k_thread_stack_free,
@@ -927,6 +952,7 @@ const _k_syscall_handler_t _k_syscall_table[K_SYSCALL_LIMIT] = {
 	[K_SYSCALL_K_MSGQ_NUM_FREE_GET] = z_mrsh_k_msgq_num_free_get,
 	[K_SYSCALL_K_MSGQ_GET_ATTRS] = z_mrsh_k_msgq_get_attrs,
 	[K_SYSCALL_K_MSGQ_NUM_USED_GET] = z_mrsh_k_msgq_num_used_get,
+	[K_SYSCALL_K_PIPE_INIT] = z_mrsh_k_pipe_init,
 	[K_SYSCALL_K_PIPE_ALLOC_INIT] = z_mrsh_k_pipe_alloc_init,
 	[K_SYSCALL_K_PIPE_PUT] = z_mrsh_k_pipe_put,
 	[K_SYSCALL_K_PIPE_GET] = z_mrsh_k_pipe_get,
@@ -934,6 +960,10 @@ const _k_syscall_handler_t _k_syscall_table[K_SYSCALL_LIMIT] = {
 	[K_SYSCALL_K_PIPE_WRITE_AVAIL] = z_mrsh_k_pipe_write_avail,
 	[K_SYSCALL_K_PIPE_FLUSH] = z_mrsh_k_pipe_flush,
 	[K_SYSCALL_K_PIPE_BUFFER_FLUSH] = z_mrsh_k_pipe_buffer_flush,
+	[K_SYSCALL_K_PIPE_WRITE] = z_mrsh_k_pipe_write,
+	[K_SYSCALL_K_PIPE_READ] = z_mrsh_k_pipe_read,
+	[K_SYSCALL_K_PIPE_RESET] = z_mrsh_k_pipe_reset,
+	[K_SYSCALL_K_PIPE_CLOSE] = z_mrsh_k_pipe_close,
 	[K_SYSCALL_K_POLL] = z_mrsh_k_poll,
 	[K_SYSCALL_K_POLL_SIGNAL_INIT] = z_mrsh_k_poll_signal_init,
 	[K_SYSCALL_K_POLL_SIGNAL_RESET] = z_mrsh_k_poll_signal_reset,

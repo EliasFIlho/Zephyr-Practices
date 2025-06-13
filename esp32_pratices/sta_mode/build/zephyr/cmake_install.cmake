@@ -89,6 +89,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/cmsis_6/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/fatfs/cmake_install.cmake")
 endif()
 
@@ -99,7 +104,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/altera/cmake_install.cmake")
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/hal_afbr/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -110,6 +115,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/atmel/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/hal_bouffalolab/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -230,6 +240,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/liblc3/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/modules/libmctp/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

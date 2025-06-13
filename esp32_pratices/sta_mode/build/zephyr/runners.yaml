@@ -1,6 +1,5 @@
 # Available runners configured by board.cmake.
 runners:
-- esp32
 - openocd
 - esp32
 
@@ -12,7 +11,7 @@ debug-runner: openocd
 
 # Common runner configuration values.
 config:
-  board_dir: /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc_wroom
+  board_dir: /home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc
   # Build outputs:
   elf_file: zephyr.elf
   bin_file: zephyr.bin
@@ -24,10 +23,6 @@ config:
 
 # Runner specific arguments
 args:
-  esp32:
-    - --esp-idf-path=/home/elias/zephyrproject/modules/hal/espressif
-    - --esp-app-address=0x1000
-    - --esp-monitor-baud=
   openocd:
     - --cmd-load
     - flash write_image erase
@@ -46,6 +41,9 @@ args:
     - --gdb-init
     - thb main
   esp32:
+    - --esp-monitor-baud=115200
     - --esp-idf-path=/home/elias/zephyrproject/modules/hal/espressif
     - --esp-app-address=0x1000
-    - --esp-monitor-baud=
+    - --esp-flash-size=4MB
+    - --esp-flash-freq=40m
+    - --esp-flash-mode=dio

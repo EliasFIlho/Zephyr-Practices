@@ -82,3 +82,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/lib/utils/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/lib/uuid/cmake_install.cmake")
+endif()
+

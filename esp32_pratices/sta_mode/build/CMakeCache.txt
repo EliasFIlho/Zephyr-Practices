@@ -24,10 +24,10 @@ APPLICATION_CONFIG_DIR:PATH=/home/elias/zephyrproject/applications/esp32_pratice
 APPLICATION_SOURCE_DIR:PATH=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode
 
 //Selected board
-BOARD:STRING=esp32_devkitc_wroom/esp32/procpu
+BOARD:STRING=esp32_devkitc/esp32/procpu
 
-//Main board directory for board (esp32_devkitc_wroom)
-BOARD_DIR:PATH=/home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc_wroom
+//Main board directory for board (esp32_devkitc)
+BOARD_DIR:PATH=/home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc
 
 //Support board extensions
 BOARD_EXTENSIONS:BOOL=ON
@@ -42,7 +42,7 @@ BYPRODUCT_KERNEL_BIN_NAME:FILEPATH=/home/elias/zephyrproject/applications/esp32_
 BYPRODUCT_KERNEL_ELF_NAME:FILEPATH=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/zephyr.elf
 
 //Selected board
-CACHED_BOARD:STRING=esp32_devkitc_wroom/esp32/procpu
+CACHED_BOARD:STRING=esp32_devkitc/esp32/procpu
 
 //Selected shield
 CACHED_SHIELD:STRING=
@@ -121,8 +121,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//Path to a program.
-CMAKE_C_COMPILER:FILEPATH=/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc
+//C compiler
+CMAKE_C_COMPILER:STRING=/home/elias/zephyr-sdk-0.17.0/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -226,13 +226,13 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_NAME:STATIC=wifi_sta_mode
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=4.0.99
+CMAKE_PROJECT_VERSION:STATIC=4.1.99
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_MAJOR:STATIC=4
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=0
+CMAKE_PROJECT_VERSION_MINOR:STATIC=1
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_PATCH:STATIC=99
@@ -312,7 +312,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 // listed, e.g. CONF_FILE="prj1.conf;prj2.conf" The CACHED_CONF_FILE
 // is internal Zephyr variable used between CMake runs. To change
 // CONF_FILE, use the CONF_FILE variable.
-CONF_FILE:STRING=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/prj.conf;/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/boards/esp32_devkitc_wroom_procpu.conf
+CONF_FILE:STRING=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/prj.conf
 
 //Path to a program.
 DTC:FILEPATH=/home/elias/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin/dtc
@@ -322,7 +322,10 @@ DTC:FILEPATH=/home/elias/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin
 // parameter. These settings will override the settings in the
 // board's .dts file. Multiple files may be listed, e.g. DTC_OVERLAY_FILE="dts1.overlay
 // dts2.overlay"
-DTC_OVERLAY_FILE:STRING=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/boards/esp32_devkitc_wroom_procpu.overlay
+DTC_OVERLAY_FILE:STRING=
+
+//Path to a program.
+GEN_KOBJECT_LIST:FILEPATH=/home/elias/zephyrproject/zephyr/scripts/build/gen_kobject_list.py
 
 //Linker BFD compatibility (compiler reported)
 GNULD_LINKER_IS_BFD:BOOL=ON
@@ -334,7 +337,7 @@ GNULD_VERSION_STRING:STRING=2.38
 GPERF:FILEPATH=/usr/bin/gperf
 
 //Path to a program.
-IMGTOOL:FILEPATH=/home/elias/zephyrproject/.venv/bin/imgtool
+IMGTOOL:FILEPATH=/home/elias/zephyrproject/bootloader/mcuboot/scripts/imgtool.py
 
 //Path to a program.
 OPENOCD:FILEPATH=/home/elias/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin/openocd
@@ -419,8 +422,8 @@ wifi_sta_mode_SOURCE_DIR:STATIC=/home/elias/zephyrproject/applications/esp32_pra
 # INTERNAL cache entries
 ########################
 
-//List of board directories for board (esp32_devkitc_wroom)
-BOARD_DIRECTORIES:INTERNAL=/home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc_wroom
+//List of board directories for board (esp32_devkitc)
+BOARD_DIRECTORIES:INTERNAL=/home/elias/zephyrproject/zephyr/boards/espressif/esp32_devkitc
 //DT bindings root directories
 CACHED_DTS_ROOT_BINDINGS:INTERNAL=/home/elias/zephyrproject/zephyr/dts/bindings
 //ADVANCED property for variable: CMAKE_ADDR2LINE
@@ -474,6 +477,8 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
@@ -530,7 +535,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=156
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=170
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -588,7 +593,7 @@ HWMv2:INTERNAL=True
 KERNEL_META_PATH:INTERNAL=/home/elias/zephyrproject/applications/esp32_pratices/sta_mode/build/zephyr/zephyr.meta
 //List of SoC directories for SoC (esp32)
 SOC_DIRECTORIES:INTERNAL=/home/elias/zephyrproject/zephyr/soc/espressif
-SOC_LINKER_SCRIPT:INTERNAL=/home/elias/zephyrproject/zephyr/soc/espressif/esp32/default.ld
+SOC_LINKER_SCRIPT:INTERNAL=/home/elias/zephyrproject/zephyr/soc/espressif/common/../esp32/default.ld
 //West
 WEST:INTERNAL=/home/elias/zephyrproject/.venv/bin/python3;-m;west
 //Compiler reason failure
@@ -599,8 +604,6 @@ _Python3_EXECUTABLE:INTERNAL=/home/elias/zephyrproject/.venv/bin/python3
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;12;3;64;;cpython-312-x86_64-linux-gnu.so;abi3;/usr/lib/python3.12;/home/elias/zephyrproject/.venv/lib/python3.12;/home/elias/zephyrproject/.venv/lib/python3.12/site-packages;/home/elias/zephyrproject/.venv/lib/python3.12/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=e756f7049ea8913d73bfaa426be4de7b
-//Interpreter reason failure
-_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 
